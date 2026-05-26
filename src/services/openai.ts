@@ -32,11 +32,12 @@ export async function generateContentConcept(): Promise<any> {
   // Query Supabase for recent content logs to evaluate gender balance (last 10 entries)
   let femaleCount = 0;
   let maleCount = 0;
+  let recentConcepts: string[] = [];
   
   try {
     const { data } = await supabase
       .from('content_logs')
-      .select('target_gender')
+      .select('target_gender, concept')
       .order('created_at', { ascending: false })
       .limit(10);
       
@@ -47,15 +48,22 @@ export async function generateContentConcept(): Promise<any> {
         } else {
           maleCount++;
         }
+        if (log.concept) {
+          recentConcepts.push(log.concept);
+        }
       });
     }
   } catch (error) {
     console.error('Error fetching gender history:', error);
   }
 
-  // Brand preference: 75% Female, 25% Male
-  const ratioContext = `최근 10개의 콘텐츠의 타겟 성별 분포: 여성 ${femaleCount}회, 남성 ${maleCount}회. 
-  브랜드의 가이드라인인 여성 70~80%, 남성 20~30% 비율을 유지하기 위해 오늘 기획에 반영해주세요.`;
+  // Brand preference & Strategic Feed Rotation
+  const ratioContext = `[과거 발행 이력 분석 및 피드 최적화 지침]
+  - 최근 10회 타겟 성별 분포: 여성 ${femaleCount}회, 남성 ${maleCount}회. (목표 비율: 여성 70%, 남성 30%)
+  - 최근 발행된 기획안 주제들:
+    ${recentConcepts.length > 0 ? recentConcepts.map((c, i) => `${i+1}. ${c}`).join('\n    ') : '이력이 없습니다.'}
+  
+  ⚠️ 중요 지침: 매일 인스타 피드가 지루해지지 않고 최적화되도록, 어제나 최근에 발행된 '주제' 및 '포맷(예: 시술 전후 비교, 정보성 카드뉴스, Q&A, 고객 후기 등)'이 연속해서 겹치지 않도록 완전히 새로운 포맷으로 로테이션하여 기획하세요.`;
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o', // Premium model for deep concept planning
