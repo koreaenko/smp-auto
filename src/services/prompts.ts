@@ -80,11 +80,22 @@ ${BRAND_GUIDELINES}
 [상세 요구사항]
 1. 이미지 생성 프롬프트 (image_prompts):
 - 총 5개의 **영어(English)** 프롬프트 작성.
-- 프롬프트 기본 공식: [브랜드 스타일] + [고객 유형] + [시술 부위] + [구도] + [현실성 강조] + [디자인 스타일] + [금지 요소]
-- 자주 포함할 기본 키워드: realistic Korean SMP, subtle density enhancement, natural scalp visibility, premium Korean beauty clinic.
-- 🎨 [가장 중요한 디자인 톤]: 모든 프롬프트에 반드시 다음 영문 키워드를 강제로 포함하십시오 -> "beige, ivory, and soft gold color palette, minimalist and premium aesthetic, bright and clean natural lighting, refined luxury mood".
-- 🚫 [절대 금지 (텍스트 및 로고 생성 금지)]: 이미지 프롬프트에 글자(text), 로고(logo), 간판, 포스터 텍스트 등을 묘사하지 마십시오. DALL-E가 엉뚱한 병원 이름(예: 제이뷰의원)이나 이상한 글자를 만들어내는 것을 방지하기 위해, 오직 "순수 사진(Raw Photo without text)"만 생성되도록 "No text, no typography, no logo, pure photography" 라는 키워드를 강제로 넣으십시오.
-- 🚫 [절대 금지 (스타일)]: 어둡거나 칙칙한 블랙(black/dark) 톤 배경 금지, 모발이식 수준의 빽빽함, 가발 느낌, AI 미녀 화보 금지.
+- 🚨 [프롬프트 생성 스키마 강제]: GPT가 '완성형 광고 포스터'로 오해하지 않도록, 반드시 아래의 고정된 구조(Template)를 그대로 사용하여 작성하십시오. (절대 일반 문장형으로 쓰지 마십시오)
+
+[STYLE]
+luxury editorial beauty photography, raw photography for later graphic design placement
+
+[LIGHTING]
+soft natural beige lighting, bright and clean natural lighting
+
+[SUBJECT]
+(여기에 슬라이드 내용에 맞는 피사체 정밀 묘사. 예: close up of Korean female crown scalp SMP, authentic clinic background)
+
+[RULES]
+no text, no typography, no logo, no watermark, no signage, no poster layout, no korean text, no branding elements, no graphic design, no black background
+
+[QUALITY]
+ultra realistic, premium clinic mood, shallow depth of field, 8k resolution
 
 2. 인스타 캡션 (caption):
 - 짧은 문장, 줄바꿈 많음, 모바일 가독성 우선, 광고 느낌 배제, 부드러운 상담형.
@@ -124,9 +135,23 @@ ${BRAND_GUIDELINES}
 2. 해결책 도출 (티 나지 않는 자연스러운 밀도보강).
 3. 5장 캐러셀 프롬프트 및 인스타 캡션 작성.
 
-프롬프트 공식 및 캡션 구조는 기존 가이드라인을 따르며, 사진의 실제 두피 상태를 묘사하는 데 집중합니다.
-🎨 [가장 중요한 디자인 톤]: 생성되는 모든 영문 프롬프트에 반드시 다음 키워드를 강제로 포함하십시오 -> "beige, ivory, and soft gold color palette, minimalist and premium aesthetic, bright and clean natural lighting, refined luxury mood". 어둡거나 블랙(black/dark) 톤은 철저히 배제합니다.
-🚫 [절대 금지 (텍스트 및 로고 생성 금지)]: 이미지 프롬프트에 글자(text), 로고(logo), 간판, 포스터 텍스트 등을 묘사하지 마십시오. 오직 "순수 사진(Raw Photo without text)"만 생성되도록 "No text, no typography, no logo, pure photography" 라는 키워드를 강제로 넣으십시오.
+프롬프트 기획 규칙:
+🚨 [프롬프트 생성 스키마 강제]: GPT가 '완성형 광고 포스터'로 오해하지 않도록, 반드시 아래의 고정된 구조(Template)를 그대로 사용하여 영문 프롬프트를 작성하십시오. (절대 일반 문장형으로 쓰지 마십시오)
+
+[STYLE]
+luxury editorial beauty photography, raw photography for later graphic design placement
+
+[LIGHTING]
+soft natural beige lighting, bright and clean natural lighting
+
+[SUBJECT]
+(여기에 사진 분석 기반의 피사체 정밀 묘사. 예: close up of Korean female crown scalp SMP, authentic clinic background)
+
+[RULES]
+no text, no typography, no logo, no watermark, no signage, no poster layout, no korean text, no branding elements, no graphic design, no black background
+
+[QUALITY]
+ultra realistic, premium clinic mood, shallow depth of field, 8k resolution
 
 반드시 아래 JSON 형식으로만 완벽하게 응답해야 하며, 다른 텍스트는 포함하지 마십시오.
 JSON Response Schema:
