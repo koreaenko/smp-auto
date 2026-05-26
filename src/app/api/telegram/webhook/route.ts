@@ -70,11 +70,13 @@ async function handleCallbackQuery(callbackQuery: any) {
         `✍️ <b>콘텐츠 구성 및 이미지 프롬프트 작성 중...</b>\n\n선정 주제: <i>${recommended.title}</i> (${recommended.target_gender} SMP)\n\n슬라이드별 극사실적 이미지 프롬프트를 조율하고 있습니다... 🛠️`
       );
 
-      // 2. Generate full carousel text, slide descriptions, captions
+      // 2. Generate full carousel via 3-agent pipeline (Agent2: prompts, Agent3: caption+hashtags)
       const fullContent = await generateCarouselContent(
         recommended.title,
         recommended.target_gender,
-        recommended.carousel_structure
+        recommended.carousel_structure,
+        recommended.category,
+        recommended.goal
       );
 
       // 3. Generate image previews (from Unsplash mock or live DALL-E)

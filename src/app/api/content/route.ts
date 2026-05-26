@@ -50,11 +50,13 @@ export async function POST(req: NextRequest) {
       const conceptPlan = await generateContentConcept();
       const recommended = conceptPlan.recommended_concept;
 
-      // 2. Generate detailed slides & captions
+      // 2. Generate detailed slides & captions via 3-agent pipeline
       const fullContent = await generateCarouselContent(
         recommended.title,
         recommended.target_gender,
-        recommended.carousel_structure
+        recommended.carousel_structure,
+        recommended.category,
+        recommended.goal
       );
 
       // 3. Generate image URLs
