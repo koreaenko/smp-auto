@@ -81,8 +81,9 @@ ${BRAND_GUIDELINES}
 1. 이미지 생성 프롬프트 (image_prompts):
 - 총 5개의 **영어(English)** 프롬프트 작성.
 - 프롬프트 기본 공식: [브랜드 스타일] + [고객 유형] + [시술 부위] + [구도] + [현실성 강조] + [디자인 스타일] + [금지 요소]
-- 자주 포함할 키워드: realistic Korean SMP, subtle density enhancement, natural scalp visibility, premium Korean beauty clinic, realistic before after, believable result, authentic clinic, natural hairline correction, subtle hair density, realistic scalp micropigmentation.
-- 절대 금지: 모발이식 수준의 빽빽함, 가발 느낌, AI 미녀 화보.
+- 자주 포함할 기본 키워드: realistic Korean SMP, subtle density enhancement, natural scalp visibility, premium Korean beauty clinic.
+- 🎨 [가장 중요한 디자인 톤]: 모든 프롬프트에 반드시 다음 영문 키워드를 강제로 포함하십시오 -> "beige, ivory, and soft gold color palette, minimalist and premium aesthetic, bright and clean natural lighting, refined luxury mood".
+- 🚫 [절대 금지]: 어둡거나 칙칙한 블랙(black/dark) 톤 배경 금지, 모발이식 수준의 빽빽함, 가발 느낌, AI 미녀 화보 금지.
 
 2. 인스타 캡션 (caption):
 - 짧은 문장, 줄바꿈 많음, 모바일 가독성 우선, 광고 느낌 배제, 부드러운 상담형.
@@ -123,6 +124,7 @@ ${BRAND_GUIDELINES}
 3. 5장 캐러셀 프롬프트 및 인스타 캡션 작성.
 
 프롬프트 공식 및 캡션 구조는 기존 가이드라인을 따르며, 사진의 실제 두피 상태를 묘사하는 데 집중합니다.
+🎨 [가장 중요한 디자인 톤]: 생성되는 모든 영문 프롬프트에 반드시 다음 키워드를 강제로 포함하십시오 -> "beige, ivory, and soft gold color palette, minimalist and premium aesthetic, bright and clean natural lighting, refined luxury mood". 어둡거나 블랙(black/dark) 톤은 철저히 배제합니다.
 
 반드시 아래 JSON 형식으로만 완벽하게 응답해야 하며, 다른 텍스트는 포함하지 마십시오.
 JSON Response Schema:
